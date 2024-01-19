@@ -1,0 +1,36 @@
+<%- include('particles/navigation.ejs') %>
+
+  <div class="form">
+
+    <ul class="tab-group">
+      <li class="tab"><a href="/logIn">Войти</a></li>
+      <li class="tab active"><a href="/register">Зарегистрироваться</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <h2>Присоединяйся!</h2>
+
+      <form action="/registration" method="post">
+        <div class="field-wrap">
+          <label class="form-group__label" for="text">
+
+          </label>
+          <input type="text" id="title" name="username" required autocomplete="off" placeholder="Name" minlength="3" maxlength="32"/>
+        </div>
+
+        <div class="field-wrap">
+          <label class="form-group__label" for="password">
+
+          </label>
+          <input type="password" id="password" name="password" required autocomplete="off" placeholder="Password" minlength="4" maxlength="32"/>
+        </div>
+
+        <% if (errUsername==1){ %>
+          <p class="errUsername">Это имя пользователя уже занято</p>
+        <% } %>
+
+        <button type="submit" class="button button-block">Создать</button>
+
+      </form>
+    </div>
+    <%- include('particles/footer.ejs') %>

@@ -1,0 +1,28 @@
+<%- include('header.ejs') %>
+
+    <script src="/public/js/form.js" defer></script>
+    <div class="logo">
+        <h1></h1>
+        <div class="a">
+            <a href="/">ГЛАВНАЯ</aте>
+                <a href="/items">ITEMS</a>
+        </div>
+        <div class="search">
+            <form action="/search" method="post">
+                <input type="search" class="search" name="title" placeholder="Поиск">
+            </form>
+        </div>
+    </div>
+
+    <div class="shell">
+    <ul class="topmenu">
+        <li>
+            <a href="/pers_acc" class="topmenuA">Личный кабинет</a>
+        </li>
+        <%if(admin){%>
+            <li>
+                <a href="/create_admin" class="topmenuA">Создать админ аккаунт</a>
+            </li>
+        <%}%>
+    </ul>
+    <div class="content">
