@@ -14,7 +14,9 @@ const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 class SchoolController {
     home(req, res) {
-        res.render('home', {
+        const school = prisma.school.findMany();
+        res.render('school/index', {
+            'school': school,
             admin: req.session.admin
         });
     }
@@ -89,27 +91,6 @@ class SchoolController {
                 }
             });
             res.redirect('/school');
-        });
-    }
-    //Поиск книг
-    searchItem(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log("______");
-            const { title } = req.body;
-            console.log(title);
-            const items = yield prisma.school.findMany({
-                where: {
-                    title: {
-                        contains: String(title),
-                    },
-                },
-            });
-            console.log(items);
-            res.render('school/index', {
-                'items': items,
-                number: 1,
-                admin: req.session.admin
-            });
         });
     }
 }

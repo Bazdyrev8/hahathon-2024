@@ -106,7 +106,6 @@ p {
 
   .shell {
     width: 100%;
-    /* min-height: 800px; */
   }
 }
 
@@ -171,38 +170,20 @@ p {
   display: inline;
 }
 
-
-
 .form-button:hover {
   cursor: pointer;
 }
 
-
-
-
-.nevedimka {
-  color: rgba(240, 240, 240, 0);
-
-}
-
 .form_auth {
-  /* align-items: center; */
   align-self: start;
 }
 
 div.center {
-  /* text-align: center; */
   display: inline-block;
   width: 225px;
   margin: 30px 10px 30px 10px;
 }
 
-@media(width < 600px) {
-
-  .nevedimka {
-    color: rgba(240, 240, 240, 0)
-  }
-}
 
 
 @media(min-width: 600px) {
@@ -212,30 +193,11 @@ div.center {
     justify-content: center;
   }
 
-  .nevedimka {
-    color: rgba(240, 240, 240, 0)
-  }
-
   .topmenu>li {
     position: relative;
   }
 
-  .submenu {
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    width: 210px;
-    margin-left: -105px;
-    background: #fafafa;
-    border: 1px solid #ededed;
-    z-index: 5;
-    visibility: hidden;
-    opacity: 0;
-    transform: scale(.8);
-    transition: .4s ease-in-out;
-  }
-
-  .topmenu>li:hover .submenu {
+  .topmenu>li:hover {
     visibility: visible;
     opacity: 1;
     transform: scale(1);

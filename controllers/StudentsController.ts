@@ -116,29 +116,4 @@ export class StudentsController {
 
         res.redirect('/items');
     }
-
-    
-    //Поиск книг
-    async searchItem(req: Request, res: Response) {
-        console.log("______");
-        const { title } = req.body;
-        console.log(title);
-        const items = await prisma.items.findMany({
-            where: {
-                title: {
-                    contains: String(title),
-                },
-            },
-        });
-
-        console.log(items);
-        const categories = await prisma.categories.findMany();
-
-        res.render('items/index', {
-            'items': items,
-            number: 1,
-            categories: categories,
-            admin: req.session.admin
-        });
-    }
 }

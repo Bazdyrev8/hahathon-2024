@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { items, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { type } from 'os';
 import multer from 'multer';
 import path from 'path';
@@ -9,7 +9,10 @@ const prisma: PrismaClient = new PrismaClient();
 export class SchoolController {
 
     home(req: Request, res: Response) {
-        res.render('home', {
+        const school = prisma.school.findMany();
+
+        res.render('school/index', {
+            'school': school,
             admin: req.session.admin
         });
     }
@@ -84,28 +87,5 @@ export class SchoolController {
         });
 
         res.redirect('/school');
-    }
-
-
-    //Поиск книг
-    async searchItem(req: Request, res: Response) {
-        console.log("______");
-        const { title } = req.body;
-        console.log(title);
-        const items = await prisma.school.findMany({
-            where: {
-                title: {
-                    contains: String(title),
-                },
-            },
-        });
-
-        console.log(items);
-
-        res.render('school/index', {
-            'items': items,
-            number: 1,
-            admin: req.session.admin
-        });
     }
 }

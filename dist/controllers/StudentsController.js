@@ -119,28 +119,5 @@ class StudentsController {
             res.redirect('/items');
         });
     }
-    //Поиск книг
-    searchItem(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log("______");
-            const { title } = req.body;
-            console.log(title);
-            const items = yield prisma.items.findMany({
-                where: {
-                    title: {
-                        contains: String(title),
-                    },
-                },
-            });
-            console.log(items);
-            const categories = yield prisma.categories.findMany();
-            res.render('items/index', {
-                'items': items,
-                number: 1,
-                categories: categories,
-                admin: req.session.admin
-            });
-        });
-    }
 }
 exports.StudentsController = StudentsController;

@@ -45,15 +45,6 @@ model events {
   third_top  Int
 }
 
-// model school_events{
-//   school     school @relation(fields:[schoolId], references: [id])
-//   schoolId      Int
-//   events     events @relation(fields:[eventsId], references: [id])
-//   eventsId      Int
-
-//   @@id([schoolId, eventsId])
-// }
-
 model top_places {
   id   Int     @id @default(autoincrement())
   name String? @db.VarChar(255)

@@ -10,14 +10,10 @@ const multer_1 = __importDefault(require("multer"));
 const SchoolController_1 = require("./controllers/SchoolController");
 const StudentsController_1 = require("./controllers/StudentsController");
 const EventsController_1 = require("./controllers/EventsController");
-const AuthController_1 = require("./controllers/AuthController");
-const CommentController_1 = require("./controllers/CommentController");
 const app = (0, express_1.default)();
 const scoolController = new SchoolController_1.SchoolController();
 const studentsController = new StudentsController_1.StudentsController();
 const eventsController = new EventsController_1.EventsController();
-const authController = new AuthController_1.AuthController();
-const commentController = new CommentController_1.CommentController();
 app.use(express_1.default.static('public'));
 app.use(express_1.default.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
@@ -71,9 +67,6 @@ app.get("/school/:id/students", (req, res) => {
 app.get("/students/:id", (req, res) => {
     studentsController.show(req, res);
 });
-app.get("/school/:id/students/action/create", (req, res) => {
-    studentsController.form_create(req, res);
-});
 app.post("/school/:id/students/create", upload.single('file'), (req, res, next) => {
     studentsController.create(req, res);
 });
@@ -92,9 +85,6 @@ app.get("/events", (req, res) => {
 app.get("/school/:id/events", (req, res) => {
     eventsController.index(req, res);
 });
-app.get("/school/:id/events/action/create", (req, res) => {
-    eventsController.form_create(req, res);
-});
 app.post("/school/:id/events/create", upload.single('file'), (req, res, next) => {
     eventsController.create(req, res);
 });
@@ -103,58 +93,4 @@ app.post("/school/:id/events/update", upload.single('file'), (req, res) => {
 });
 app.post("/school/:id/events/destroy", (req, res) => {
     eventsController.destroy(req, res);
-});
-app.get("/pers_acc", (req, res) => {
-    authController.pers_acc(req, res);
-});
-app.get("/logIn", (req, res) => {
-    authController.logIn_page(req, res);
-});
-app.get("/register", (req, res) => {
-    authController.reg_page(req, res);
-});
-app.post("/auth", (req, res) => {
-    authController.SignIn(req, res);
-});
-app.post("/registration", (req, res) => {
-    authController.SignUp(req, res);
-});
-// app.post("/update_password", (req: Request, res: Response) => {
-//   authController.updatePassword(req, res);
-// });
-app.get("/update_password", (req, res) => {
-    authController.updatePassword(req, res);
-});
-// app.post("/destroy_account", (req: Request, res: Response) => {
-//   authController.destroyAccount(req, res);
-// });
-app.get("/destroy_account", (req, res) => {
-    authController.destroyAccount(req, res);
-});
-app.get("/create_admin", (req, res) => {
-    authController.createAdmin(req, res);
-});
-// app.post("/create_admin", (req: Request, res: Response) => {
-//   authController.createAdminAccount(req, res);
-// });
-app.post("/toFavorites", (req, res) => {
-    authController.toFavorites(req, res);
-});
-app.post("/deleteFavorit", (req, res) => {
-    authController.deleteFavorit(req, res);
-});
-app.get("/favorites", (req, res) => {
-    authController.viewFavorites(req, res);
-});
-app.post("/logout", (req, res) => {
-    authController.logout(req, res);
-});
-app.post("/createComment", (req, res) => {
-    commentController.createComment(req, res);
-});
-app.post("/deleteComment", (req, res) => {
-    commentController.destroyComment(req, res);
-});
-app.post("/search", (req, res) => {
-    scoolController.searchItem(req, res);
 });
