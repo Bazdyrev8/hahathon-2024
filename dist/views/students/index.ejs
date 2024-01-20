@@ -1,0 +1,56 @@
+<%- include('../particles/navigation.ejs') %>
+
+    <div class="form">
+        <div class="tab-content">
+            <h2>Студенты</h2>
+            <form action="/school/<%= schoolID %>/students/create" enctype="multipart/form-data" method="post">
+                <input value="" type="hidden" id="id" name="id">
+
+                <div class="field-wrap">
+                    <label class="form-group__label" for="first_name">
+                    </label>
+                    <input class="form__input" value="" type="text" id="first_name" name="first_name" required
+                        autocomplete="off" placeholder="first_name" />
+                </div>
+
+                <div class="field-wrap">
+                    <label class="form-group__label" for="name">
+                    </label>
+                    <input class="form__input" value="" type="text" id="surname" name="surname" required
+                        autocomplete="off" placeholder="surname" />
+                </div>
+
+                <div class="field-wrap">
+                    <label class="form-group__label" for="name">
+                    </label>
+                    <input class="form__input" value="" type="text" id="date_of_birth" name="date_of_birth" required
+                        autocomplete="off" placeholder="date of birth" />
+                </div>
+                <button class="button button-block" type="submit" value="Обновить">Добавить</button>
+            </form>
+        </div>
+    </div>
+
+    <h1 class="title__students"><span style="color: blue;">У</span>ченики школы</h1>
+
+    <% for (let i=0; i < students.length; i++) { %>
+
+
+
+        <div class="section" style="text-align: left;">
+            <div class="students__people">
+                    <span style="color: blue;">Имя:</span><%= students[i].first_name %>
+                    <span style="color: blue;">Фамилия:</span><%= students[i].surname %>
+                    <span style="color: blue;">Дата Рождения:</span><%= students[i].date_of_birth %>
+                    <span style="color: blue;">ID:</span><%= students[i].id %>
+                    <form action="/school/<%= schoolID %>/students/destroy" method="post" class="center">
+                        <input value="<%= students.id %>" type="hidden" id="id" name="id">
+                        <button class="button button-block" type="submit" value="Удалить">Отчислить</button>
+                    </form>
+                    <p></p>
+            </div>
+        </div>
+
+        <% } %>
+
+            <%- include('../particles/footer.ejs') %>

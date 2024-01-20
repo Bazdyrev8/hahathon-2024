@@ -1,0 +1,37 @@
+<%- include('../particles/navigation.ejs') %>
+
+    <div class="shell_book">
+        <div class="section">
+            <h2 class="section__title">
+                <%= school.name %>
+            </h2>
+        </div>
+    </div>
+    <a class="navigation__href" href="/school/<%= school.id %>/students">СТУДЕНТЫ</a>
+    <a class="navigation__href" href="/school/<%= school.id %>/events">МЕРОПРИЯТИЯ</a>
+    </div>
+    <div class="form">
+        <div class="tab-content">
+            <h2>Редактирование</h2>
+            <form action="/school/update" enctype="multipart/form-data" method="post">
+                <input value="<%= school.id %>" type="hidden" id="id" name="id">
+
+                <div class="field-wrap">
+                    <label class="form-group__label" for="name">
+                    </label>
+                    <input class="form__input" value="<%= school.name %>" type="text" id="name" name="name" required autocomplete="off"
+                        placeholder="name" />
+                </div>
+
+                <button class="button button-block" type="submit" value="Обновить">Обновить</button>
+            </form>
+
+            <form action="/school/destroy" method="post" class="center">
+                <input value="<%= school.id %>" type="hidden" id="id" name="id">
+                <button class="button button-block" type="submit" value="Удалить">Удалить</button>
+            </form>
+        </div>
+    </div>
+
+    
+    <%- include('../particles/footer.ejs') %>

@@ -1,0 +1,65 @@
+<%- include('../particles/navigation.ejs') %>
+
+    <div class="form">
+        <div class="tab-content">
+            <h2>МЕРОПРИЯТИЯ</h2>
+            <form action="/school/<%= schoolID %>/events/create" enctype="multipart/form-data" method="post">
+                <input value="" type="hidden" id="id" name="id">
+
+                <div class="field-wrap">
+                    <label class="form-group__label" for="name">
+                    </label>
+                    <input class="form__input" value="" type="text" id="name" name="name" required
+                        autocomplete="off" placeholder="name" />
+                </div>
+
+                <div class="field-wrap">
+                    <label class="form-group__label" for="first_top">
+                    </label> 
+                    <input class="form__input" value="" type="text" id="first_top" name="first_top" required
+                        autocomplete="off" placeholder="first_top" />
+                </div>
+
+                <div class="field-wrap">
+                    <label class="form-group__label" for="second_top">
+                    </label> 
+                    <input class="form__input" value="" type="text" id="second_top" name="second_top" required
+                        autocomplete="off" placeholder="second_top" />
+                </div>
+
+                <div class="field-wrap">
+                    <label class="form-group__label" for="third_top">
+                    </label> 
+                    <input class="form__input" value="" type="text" id="third_top" name="third_top" required
+                        autocomplete="off" placeholder="third_top" />
+                </div>
+
+                <div class="field-wrap">
+                    <label class="form-group__label" for="date">
+                    </label>
+                    <input class="form__input" value="" type="text" id="date" name="date" required
+                        autocomplete="off" placeholder="date"/>
+                </div>
+                <button class="button button-block" type="submit" value="Обновить">Добавить</button>
+            </form>
+        </div>
+    </div>
+
+    <h1 class="title__students"><span style="color: blue;">M</span>ероприятия</h1>
+
+    <% for (let i=0; i < events.length; i++) { %>
+
+
+
+        <div class="section" style="text-align: left;">
+            <div class="students__people">
+                <h3>
+                    <span style="color: blue;">Название:</span><%= events[i].name %>
+                    <span style="color: blue;">Дата:</span><%= events[i].date %>
+                </h3>
+            </div>
+        </div>
+
+        <% } %>
+
+            <%- include('../particles/footer.ejs') %>

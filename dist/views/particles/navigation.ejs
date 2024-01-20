@@ -3,26 +3,25 @@
     <script src="/public/js/form.js" defer></script>
     <div class="logo">
         <h1></h1>
-        <div class="a">
-            <a href="/">ГЛАВНАЯ</aте>
-                <a href="/items">ITEMS</a>
-        </div>
-        <div class="search">
-            <form action="/search" method="post">
-                <input type="search" class="search" name="title" placeholder="Поиск">
-            </form>
+        <div class="navpanel__item">
+            <a class="navpanel__link" href="/school">ШКОЛЫ</a>
+            <a class="navpanel__link" href="/events">МЕРОПРИЯТИЯ</a>
+            <a class="navpanel__link" href="/students">УЧЕНИКИ</a>
         </div>
     </div>
 
     <div class="shell">
-    <ul class="topmenu">
-        <li>
-            <a href="/pers_acc" class="topmenuA">Личный кабинет</a>
-        </li>
-        <%if(admin){%>
+        <div class="navigation__shell">
+            <a class="navigation__href" href="/school/action/create">
+                Добавить Школу
+            </a>
+        </div>
+        <!-- <ul class="topmenu">
             <li>
-                <a href="/create_admin" class="topmenuA">Создать админ аккаунт</a>
+                <a href="/pers_acc" class="topmenuA">Личный кабинет</a>
             </li>
-        <%}%>
-    </ul>
-    <div class="content">
+            <li>
+                <a href="/school/action/create" class="topmenuA">Добавить Школу</a>
+            </li>
+        </ul> -->
+        <div class="content">

@@ -1,0 +1,18 @@
+<%- include('../particles/navigation.ejs') %>
+
+    <h1 class="title__students"><span style="color: blue;">M</span>ероприятия</h1>
+
+    <% for (let i=0; i < events.length; i++) { %>
+
+        <div class="section" style="text-align: left;">
+            <div class="students__people">
+                <h3><ul style="list-style-type: decimal;">
+                    <li><span style="color: blue;">Название:</span><%= events[i].name %>
+                    <span style="color: blue;">Дата:</span><%= events[i].date %></li>
+                </ul></h3>
+            </div>
+        </div>
+
+        <% } %>
+
+            <%- include('../particles/footer.ejs') %>

@@ -21,7 +21,7 @@ button:hover {
 }
 
 .form {
-  background: rgba(19, 35, 47, .9);
+  background: rgb(59, 84, 134);
   padding: 30px;
   max-width: 600px;
   margin: 30px auto;
@@ -172,8 +172,18 @@ textarea:focus {
   border-color: rgb(60, 60, 60);
 }
 
+.form__input {
+  border-radius: 10px;
+  border-color: black;
+  border: 2px solid;
+  transition: .8s;
+  color: rgb(60, 60, 60);
+}
+
 .field-wrap {
   position: relative;
+  background-color: white;
+  border-radius: 10px;
   margin-bottom: 25px;
 }
 
@@ -196,21 +206,22 @@ textarea:focus {
 .button {
   border: 0;
   outline: none;
-  border-radius: 0;
+  border-radius: 16px;
   padding: 15px 0;
   font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  background: rgb(60, 60, 60);
-  color: #fff;
   transition: all 0.5s ease;
   -webkit-appearance: none;
+  background: white;
+  color: rgb(28, 101, 246);
 }
 
 .button:hover,
 .button:focus {
-  background: rgb(100, 100, 100);
+  background: rgb(28, 101, 246);
+  color: #fff;
 }
 
 .button-block {

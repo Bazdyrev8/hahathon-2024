@@ -1,21 +1,8 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-async function Categories() {
-    const createMany = await prisma.categories.createMany({
-        data: [
-            { title: "categ1" },
-            { title: "categ2" },
-            { title: "categ3"},
-            { title: "categ4"}
-        ],
-        skipDuplicates: true
-        }
-    );
-}
-
 async function Items() {
-    const createMany = await prisma.items.createMany({
+    const createMany = await prisma.school.createMany({
         data: [
             { 
                 title: "",

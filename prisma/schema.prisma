@@ -2,58 +2,59 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
-
 
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model items {
-  id    Int    @id @default(autoincrement())
-  title String @db.VarChar(255)
-  image String @db.VarChar(255)
-  description String @db.VarChar(1025)
-  category categories @relation(fields: [categ_id], references: [id])
-  categ_id Int
-  comments comments[]
-  items favorites[] 
-
-  @@fulltext([title])
-}
-
-model categories {
-  id    Int    @id @default(autoincrement())
-  title String @db.VarChar(255)
-  items items[]
-}
-
-model comments {
-  id Int @id @default(autoincrement())
-  author String @db.VarChar(255)
-  description String @db.VarChar(1025)
-  item items @relation(fields: [item_id], references: [id])
-  item_id Int
-}
-
 model users {
-  id    Int    @id @default(autoincrement())
+  id       Int     @id @default(autoincrement())
   username String? @db.VarChar(255)
   password String? @db.VarChar(255)
-  type String @db.VarChar(2)
-  favorites favorites[]
+  type     String  @db.VarChar(2)
 }
 
-// users__items = favorites
-// Избранное
-model favorites {
-  user     users @relation(fields:[userId], references: [id])
-  userId      Int
-  item     items @relation(fields:[itemId], references: [id])
-  itemId      Int
-  
-  @@id([userId, itemId])
+model school {
+  id       Int        @id @default(autoincrement())
+  name     String     @db.VarChar(255)
+  students students[]
+  events   events[]
+}
+
+model students {
+  id            Int     @id @default(autoincrement())
+  first_name    String? @db.VarChar(255)
+  surname       String? @db.VarChar(255)
+  date_of_birth String? @db.VarChar(255)
+  school        school  @relation(fields: [school_id], references: [id])
+  school_id     Int
+}
+
+model events {
+  id         Int     @id @default(autoincrement())
+  name       String? @db.VarChar(255)
+  date       String? @db.VarChar(255)
+  school     school  @relation(fields: [school_id], references: [id])
+  school_id  Int
+  first_top  Int
+  second_top Int
+  third_top  Int
+}
+
+// model school_events{
+//   school     school @relation(fields:[schoolId], references: [id])
+//   schoolId      Int
+//   events     events @relation(fields:[eventsId], references: [id])
+//   eventsId      Int
+
+//   @@id([schoolId, eventsId])
+// }
+
+model top_places {
+  id   Int     @id @default(autoincrement())
+  name String? @db.VarChar(255)
 }

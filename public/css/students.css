@@ -1,0 +1,13 @@
+.title__students {
+    color: black;
+    text-align: center;
+    display: block;
+
+}
+
+.students__people {
+    display: block;
+    font-size: 24px;
+    padding-left: 15px;
+    padding-right: 15px;
+}

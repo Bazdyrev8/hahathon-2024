@@ -7,11 +7,15 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const express_session_1 = __importDefault(require("express-session"));
 const multer_1 = __importDefault(require("multer"));
-const ItemsController_1 = require("./controllers/ItemsController");
+const SchoolController_1 = require("./controllers/SchoolController");
+const StudentsController_1 = require("./controllers/StudentsController");
+const EventsController_1 = require("./controllers/EventsController");
 const AuthController_1 = require("./controllers/AuthController");
 const CommentController_1 = require("./controllers/CommentController");
 const app = (0, express_1.default)();
-const itemsController = new ItemsController_1.ItemsController();
+const scoolController = new SchoolController_1.SchoolController();
+const studentsController = new StudentsController_1.StudentsController();
+const eventsController = new EventsController_1.EventsController();
 const authController = new AuthController_1.AuthController();
 const commentController = new CommentController_1.CommentController();
 app.use(express_1.default.static('public'));
@@ -35,34 +39,70 @@ app.listen(1415, () => {
     console.log('Server is running on port 1415');
 });
 app.get("/", (req, res) => {
-    itemsController.home(req, res);
+    scoolController.home(req, res);
 });
-app.get("/items", (req, res) => {
-    itemsController.index(req, res);
+app.get("/school", (req, res) => {
+    scoolController.index(req, res);
 });
-app.get("/items/category/:id", (req, res) => {
-    itemsController.category(req, res);
+app.get("/school/:id", (req, res) => {
+    scoolController.show(req, res);
 });
-app.get("/items/:id", (req, res) => {
-    itemsController.show(req, res);
+app.get("/school/action/create", (req, res) => {
+    scoolController.form_create(req, res);
 });
-app.get("/items/action/create", (req, res) => {
-    itemsController.create(req, res);
+app.post("/school/create", upload.single('file'), (req, res, next) => {
+    scoolController.create(req, res);
 });
-app.get("/categories/create", (req, res) => {
-    itemsController.createCategPage(req, res);
+app.post("/school/update", upload.single('file'), (req, res) => {
+    scoolController.update(req, res);
 });
-app.post("/categories/action/create", (req, res) => {
-    itemsController.createCateg(req, res);
+app.post("school/destroy", (req, res) => {
+    scoolController.destroy(req, res);
 });
-app.post("/store", upload.single('file'), (req, res, next) => {
-    itemsController.store(req, res);
+//************************** */
+///
+// СТУДЕНТЫ
+app.get("/students", (req, res) => {
+    studentsController.students(req, res);
 });
-app.post("/update", upload.single('file'), (req, res) => {
-    itemsController.update(req, res);
+app.get("/school/:id/students", (req, res) => {
+    studentsController.index(req, res);
 });
-app.post("/destroy", (req, res) => {
-    itemsController.destroy(req, res);
+app.get("/students/:id", (req, res) => {
+    studentsController.show(req, res);
+});
+app.get("/school/:id/students/action/create", (req, res) => {
+    studentsController.form_create(req, res);
+});
+app.post("/school/:id/students/create", upload.single('file'), (req, res, next) => {
+    studentsController.create(req, res);
+});
+app.post("/school/:id/students/update", upload.single('file'), (req, res) => {
+    studentsController.update(req, res);
+});
+app.post("/school/:id/students/destroy", (req, res) => {
+    studentsController.destroy(req, res);
+});
+//************************** */
+///
+// МЕРОПРИПРИЯТИЯ
+app.get("/events", (req, res) => {
+    eventsController.events(req, res);
+});
+app.get("/school/:id/events", (req, res) => {
+    eventsController.index(req, res);
+});
+app.get("/school/:id/events/action/create", (req, res) => {
+    eventsController.form_create(req, res);
+});
+app.post("/school/:id/events/create", upload.single('file'), (req, res, next) => {
+    eventsController.create(req, res);
+});
+app.post("/school/:id/events/update", upload.single('file'), (req, res) => {
+    eventsController.update(req, res);
+});
+app.post("/school/:id/events/destroy", (req, res) => {
+    eventsController.destroy(req, res);
 });
 app.get("/pers_acc", (req, res) => {
     authController.pers_acc(req, res);
@@ -116,5 +156,5 @@ app.post("/deleteComment", (req, res) => {
     commentController.destroyComment(req, res);
 });
 app.post("/search", (req, res) => {
-    itemsController.searchItem(req, res);
+    scoolController.searchItem(req, res);
 });

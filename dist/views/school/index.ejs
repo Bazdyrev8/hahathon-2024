@@ -1,0 +1,14 @@
+<%- include('../particles/navigation.ejs') %>
+
+    <% for (let i=0; i < school.length; i++) { %>
+
+        <div class="section">
+            <a href="/school/<%= school[i].id %>" class="section__school">
+                <h2 class="school__title">
+                    <span style="color: blue;">Школа:</span><%= school[i].name %><p></p>
+                </h2>
+            </a>
+        </div>
+        <% } %>
+
+<%- include('../particles/footer.ejs') %>

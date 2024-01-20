@@ -1,0 +1,20 @@
+.section {
+    display: inline-block;
+    
+}
+
+.section__school {
+    text-decoration: none;
+    
+}
+
+
+.school__title {
+    transition: .5s;
+    font-size: 28px;
+}
+
+.school__title:hover {
+    color: aqua;
+    transition: .5s;
+}
